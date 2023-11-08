@@ -1,17 +1,9 @@
 <?php
 
 namespace App\Helpers;
-use Illuminate\Support\Str;
 
 class FileHelper
 {
-    public static function storeFile($file, $field, $nrp)
-    {
-        $fileName = $field . '_' . time() . '_' . $nrp . '_' . Str::random(6) . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('efile', $fileName, 'public');
-
-        return $fileName;
-    }
 
     public static function tanggal_indo($tanggal)
     {

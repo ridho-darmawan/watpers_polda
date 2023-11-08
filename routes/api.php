@@ -53,7 +53,6 @@ Route::get('/storage-link', function () {
 
 
 Route::post('login',[UserController::class,'login']);
-Route::get('versi',[VersionController::class,'index']);
 
 Route::middleware('auth:sanctum')->group(function(){
 
@@ -110,9 +109,6 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('artikel/rekomendasi-kebugaran/{id_artikel}',[ArtikelController::class,'rekomendasiKebugaranById']);
     Route::get('artikel/pengecekan-kesehatan',[ArtikelController::class,'pengecekanKesehatan']);
     Route::get('artikel/pengecekan-kesehatan/{id_artikel}',[ArtikelController::class,'pengecekanKesehatanById']);
-
-
-
 
 });
 
