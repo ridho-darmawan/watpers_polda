@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,26 +13,8 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Route::get('/clear-cache', function() {
-    $exitCode = Artisan::call('cache:clear');
-    $exitCode = Artisan::call('config:cache');
-    Artisan::call('optimize');
-    return 'DsONE'; //Return anything
-});
 
-Route::get('/', function () {
-   return 'v11';
-});
 
-Route::get('/optimize', function () {
-    Artisan::call('optimize');
-   return 'okes'; 
-});
 
-Route::get('/key', function () {
-    Artisan::call('key:generate');
-
-    return 'done';
-});
 
 

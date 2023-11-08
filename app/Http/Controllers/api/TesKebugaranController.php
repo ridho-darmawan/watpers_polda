@@ -10,9 +10,9 @@ use App\Http\Controllers\Controller;
 class TesKebugaranController extends Controller
 {
 
-    public function index($nrp)
+    public function index($id_user)
     {
-        $tes_kebugaran = TesKebugaran::where('nrp', $nrp)->orderBy('id','desc')->first();
+        $tes_kebugaran = TesKebugaran::where('id_user', $id_user)->orderBy('id','desc')->first();
 
         if($tes_kebugaran)
         {
@@ -26,17 +26,23 @@ class TesKebugaranController extends Controller
     {
         try {
             $validatedData = $request->validate([
-                'nama' => 'required',
-                'nrp' => 'required',
-                'waktu' => 'required',
+                'id_user' => 'required',
                 'jarak' => 'required',  
+                'jam' => 'required',
+                'menit' => 'required',
+                'detik' => 'required',
+                'kecepatan' => 'required',
+                'jumlah_langkah' => 'required',
             ]);
 
             $data = [
-                'nama' => $request->nama,
-                'nrp' => $request->nrp,
-                'waktu' => $request->waktu,
+                'id_user' => $request->id_user,
                 'jarak' => $request->jarak,
+                'jam' => $request->jam,
+                'menit' => $request->menit,
+                'detik' => $request->detik,
+                'kecepatan' => $request->kecepatan,
+                'jumlah_langkah' => $request->jumlah_langkah,
             ];
 
             $tes_kebugaran = TesKebugaran::create($data);

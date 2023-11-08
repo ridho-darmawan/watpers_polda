@@ -5,23 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TesKebugaran extends Model
+class PengecekanKesehatan extends Model
 {
     use HasFactory;
 
-    protected $table = "tes_kebugaran";
+    protected $table = "pengecekankesehatan";
     protected $primaryKey = "id";
 
     protected $fillable = [
-        'id_user',
-        'jarak',
-        'jam',
-        'menit',
-        'detik',
-        'kecepatan',
-        'jumlah_langkah',
+        'judul_artikel',
+        'deskripsi_artikel',
+        'foto_artikel',
         
     ];
+
+    public $timestamps = false;
 
      
 }

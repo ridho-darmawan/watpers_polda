@@ -10,24 +10,26 @@ use App\Http\Controllers\Controller;
 
 class BeladiriController extends Controller
 {
-    public function index($nrp)
+    public function index($id_user)
     {
-        $beladiri = Beladiri::where('nrp', $nrp)->orderBy('id','desc')->first();
+        $beladiri = Beladiri::where('id_user', $id_user)->orderBy('id','desc')->first();
 
         if($beladiri)
         {
-            $nilai_teknik_dasar_beladiri = $beladiri->teknik_dasar1 + $beladiri->teknik_dasar2 + $beladiri->teknik_dasar3 + $beladiri->teknik_dasar4 + $beladiri->teknik_dasar5 + $beladiri->teknik_dasar6;
+            $tgl_penilaian  = date('m', strtotime($beladiri->created_at));
 
-            $nilai_teknik_beladiri_tanpa_alat = $beladiri->teknik_tanpaalat1 + $beladiri->teknik_tanpaalat2 + $beladiri->teknik_tanpaalat3 + $beladiri->teknik_tanpaalat4 + $beladiri->teknik_tanpaalat5 + $beladiri->teknik_tanpaalat6 + $beladiri->teknik_tanpaalat7  + $beladiri->teknik_tanpaalat8 + $beladiri->teknik_tanpaalat9 + $beladiri->teknik_tanpaalat10;
-
-            $nilai_teknik_beladiri_dengan_alat = $beladiri->teknik_alat1_alat1 + $beladiri->teknik_alat_alat2 + $beladiri->teknik_alat_alat3 + $beladiri->teknik_alat_alat4;
-           
+            if ($tgl_penilaian > 6) {
+                $semester = 2;
+            }else{
+                $semester = 1;
+            }
+             
             $nilai_beladiri = [
-                'teknik_dasar_beladiri' => $nilai_teknik_dasar_beladiri,
-                'teknik_beladiri_tanpa_alat' => $nilai_teknik_beladiri_tanpa_alat,
-                'teknik_beladiri_dengan_alat' => $nilai_teknik_beladiri_dengan_alat,
-                'nilai_beladiri' => $beladiri->jumlah,
-                'created_at' => FileHelper::tanggal_indo(date('Y-m-d', strtotime($beladiri->created_at)))
+                'teknik_gerak_beladiri' => $beladiri->tgerak_kombinasiteknik_jumlahnilai,
+                'sikap_gerak' => $beladiri->sgerak_kombinasiteknik_jumlahnilai,
+                'motivasi' => $beladiri->motivasi_kombinasiteknik_jumlahnilai,
+                'penampilan' => $beladiri->penampilan_kombinasiteknik_jumlahnilai,
+                'semester' => 'Semester ' .$semester . ' Tahun ' . date('Y', strtotime($beladiri->created_at)),
             ];
 
             return ResponseFormatter::success($nilai_beladiri, 'Successfully.');

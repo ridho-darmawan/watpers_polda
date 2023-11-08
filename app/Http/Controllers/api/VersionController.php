@@ -15,11 +15,9 @@ class VersionController extends Controller
 
         $app_url_admin = env('APP_NAME');
         $app_versi = env('APP_VERSI');
-
-        $value = \Config::get('app.url_admin');
         
         return response()->json([
-            'URL_LINK' => $value
+            'URL_LINK' => $app_url_admin
         ]);
         
 
