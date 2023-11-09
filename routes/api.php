@@ -95,6 +95,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('jasmani-berkala/{id_user}',[JasmaniBerkalaController::class,'index']);
     Route::get('kategori-pelayanan',[KategoriPelayananController::class,'index']);
     Route::get('jenis-pengajuan',[JenisPengajuanController::class,'index']);
+    Route::get('jenis-pengajuan-by-kategori/{id_kategori}',[JenisPengajuanController::class,'jenisPengajuanByKategori']);
+    Route::get('jenis-pengajuan/{id}',[JenisPengajuanController::class,'jenisPengajuanById']);
     Route::post('pengajuan',[PengajuanController::class,'store']);
     Route::get('riwayat-pengajuan/{id_user}',[PengajuanController::class,'riwayatPengajuan']);
     Route::get('progres-pengajuan/{id_pengajuan}',[PengajuanController::class,'progresPengajuan']);
