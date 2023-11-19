@@ -8,8 +8,8 @@ use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 
 class ArtikelController extends Controller
-{     
-  
+{
+
     public function informasiKesehatan()
     {
         //1 = informasi kesehatan
@@ -19,7 +19,7 @@ class ArtikelController extends Controller
             return ResponseFormatter::success($informasi_kesehatan, 'Successfully.');
         }else{
             return ResponseFormatter::error(null, 'Data Not Found', 400);
-        }   
+        }
 
     }
 
@@ -31,20 +31,20 @@ class ArtikelController extends Controller
             return ResponseFormatter::success($informasi_kesehatan, 'Successfully.');
         }else{
             return ResponseFormatter::error(null, 'Data Not Found', 400);
-        }   
+        }
 
     }
 
     public function programKesejahteraan()
     {
-        //2 = program_kesejahteraann
-        $program_kesejahteraan = Artikel::where('jenis_artikel',2)->orderBy('id','desc')->paginate(10);
+        //3 = program_kesejahteraann
+        $program_kesejahteraan = Artikel::where('jenis_artikel',3)->orderBy('id','desc')->paginate(10);
 
         if(!empty($program_kesejahteraan)) {
             return ResponseFormatter::success($program_kesejahteraan, 'Successfully.');
         }else{
             return ResponseFormatter::error(null, 'Data Not Found', 400);
-        }   
+        }
 
     }
 
@@ -56,20 +56,20 @@ class ArtikelController extends Controller
             return ResponseFormatter::success($program_kesejahteraan, 'Successfully.');
         }else{
             return ResponseFormatter::error(null, 'Data Not Found', 400);
-        }   
+        }
 
     }
 
     public function rohani()
     {
-        //3 = rohani
-        $rohani = Artikel::where('jenis_artikel',3)->orderBy('id','desc')->paginate(10);
+        //5 = rohani
+        $rohani = Artikel::where('jenis_artikel',5)->orderBy('id','desc')->paginate(10);
 
         if(!empty($rohani)) {
             return ResponseFormatter::success($rohani, 'Successfully.');
         }else{
             return ResponseFormatter::error(null, 'Data Not Found', 400);
-        }   
+        }
 
     }
 
@@ -81,7 +81,7 @@ class ArtikelController extends Controller
             return ResponseFormatter::success($rohani, 'Successfully.');
         }else{
             return ResponseFormatter::error(null, 'Data Not Found', 400);
-        }   
+        }
 
     }
 
@@ -94,7 +94,7 @@ class ArtikelController extends Controller
             return ResponseFormatter::success($rekomendasi_kebugaran, 'Successfully.');
         }else{
             return ResponseFormatter::error(null, 'Data Not Found', 400);
-        }   
+        }
 
     }
 
@@ -106,20 +106,20 @@ class ArtikelController extends Controller
             return ResponseFormatter::success($rekomendasi_kebugaran, 'Successfully.');
         }else{
             return ResponseFormatter::error(null, 'Data Not Found', 400);
-        }   
+        }
 
     }
 
     public function pengecekanKesehatan()
     {
-        //5 = rekomendasi Kebugaran
-        $pengecekan_kesehatan = Artikel::where('jenis_artikel',5)->orderBy('id','desc')->paginate(10);
+        //2 = pengecekan kesehatan
+        $pengecekan_kesehatan = Artikel::where('jenis_artikel',2)->orderBy('id','desc')->paginate(10);
 
         if(!empty($pengecekan_kesehatan)) {
             return ResponseFormatter::success($pengecekan_kesehatan, 'Successfully.');
         }else{
             return ResponseFormatter::error(null, 'Data Not Found', 400);
-        }   
+        }
 
     }
 
@@ -131,7 +131,32 @@ class ArtikelController extends Controller
             return ResponseFormatter::success($pengecekan_kesehatan, 'Successfully.');
         }else{
             return ResponseFormatter::error(null, 'Data Not Found', 400);
-        }   
+        }
+
+    }
+
+    public function kebangsaan()
+    {
+        //6 = kebangsaan
+        $kebangsaan = Artikel::where('jenis_artikel',6)->orderBy('id','desc')->paginate(10);
+
+        if(!empty($kebangsaan)) {
+            return ResponseFormatter::success($kebangsaan, 'Successfully.');
+        }else{
+            return ResponseFormatter::error(null, 'Data Not Found', 400);
+        }
+
+    }
+
+    public function kebangsaanById($id_artikel)
+    {
+        $kebangsaan = Artikel::where('id',$id_artikel)->first();
+
+        if(!empty($kebangsaan)) {
+            return ResponseFormatter::success($kebangsaan, 'Successfully.');
+        }else{
+            return ResponseFormatter::error(null, 'Data Not Found', 400);
+        }
 
     }
 }

@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\api\AdlController;
 use App\Http\Controllers\api\AmtController;
 use App\Http\Controllers\api\GdsController;
@@ -111,6 +111,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('artikel/rekomendasi-kebugaran/{id_artikel}',[ArtikelController::class,'rekomendasiKebugaranById']);
     Route::get('artikel/pengecekan-kesehatan',[ArtikelController::class,'pengecekanKesehatan']);
     Route::get('artikel/pengecekan-kesehatan/{id_artikel}',[ArtikelController::class,'pengecekanKesehatanById']);
+    Route::get('artikel/kebangsaan',[ArtikelController::class,'kebangsaan']);
+    Route::get('artikel/kebangsaan/{id_artikel}',[ArtikelController::class,'kebangsaanById']);
 
 });
 
